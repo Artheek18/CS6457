@@ -1,0 +1,54 @@
+# --- Unity generated folders (do not commit) ---
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+[Cc]rashReports/
+
+# --- Unity cache / platform-specific ---
+/[Aa]ssets/AssetStoreTools*
+/Packages/packages-lock.json
+/.gradle/
+[Bb]uildLogs/
+DerivedDataCache/
+
+# --- IDE/Editor noise ---
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.user
+*.userprefs
+
+# --- OS junk ---
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# --- Logs ---
+*.log
+*.trace
+*.pid
+
+# --- Misc binaries you probably don’t want ---
+*.apk
+*.aab
+*.ipa
+*.exe
+*.app
+*.dll
+*.pdb
+
+# --- Unity crash/diagnostics ---
+*.dmp
+*.stacktrace
