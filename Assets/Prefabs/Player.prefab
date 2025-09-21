@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2741344684026440936}
   - component: {fileID: 17848686382750537}
   - component: {fileID: 6650173710672815308}
-  - component: {fileID: 920210202653436879}
   - component: {fileID: 5390833857619650118}
   m_Layer: 0
   m_Name: Player
@@ -102,22 +101,6 @@ MonoBehaviour:
   speed: 6
   jumpForce: 15
   jumpCooldown: 0.5
---- !u!114 &920210202653436879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684354915342036066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 389929bcef07848ebbd27cd1f0c511f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: George P Burdell
-  InputMapToCircular: 1
-  forwardInputFilter: 5
-  turnInputFilter: 5
 --- !u!114 &5390833857619650118
 MonoBehaviour:
   m_ObjectHideFlags: 0

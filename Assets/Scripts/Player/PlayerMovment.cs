@@ -1,67 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovment : MonoBehaviour
 {
 
+    public float speed = 6f;
+    public float jumpForce = 10f;
+    public float jumpCooldown = 0.5f;  
+
     private Rigidbody rb;
     private float movementX;
     private float movementY;
-    public float speed = 0;
-    public float jumpForce = 0;
-    public float jumpCooldown = 0.5f;
-    private float lastJumpTime;
-    private bool isGrounded = true;
-    private int count;
+    private float lastJumpTime = -Mathf.Infinity;
 
-
-
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-
-
     void OnMove(InputValue movementValue)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-
+        Vector2 v = movementValue.Get<Vector2>();
+        movementX = v.x;
+        movementY = v.y;
     }
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement * speed);
 
+        Vector3 input = new Vector3(movementX, 0f, movementY);
+        Vector3 vel = rb.linearVelocity;
+        rb.linearVelocity = new Vector3(input.normalized.x * speed, vel.y, input.normalized.z * speed);
     }
 
-    void OnJump()
+    void OnJump(InputValue _)
     {
-        if (isGrounded && Time.time - lastJumpTime >= jumpCooldown)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            lastJumpTime = Time.time;
-            isGrounded = false;
-        }
-
+        if (Time.time - lastJumpTime < jumpCooldown)
+            return; 
+        Debug.Log("Jump pressed!");
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        lastJumpTime = Time.time;
     }
-    void OnCollisionEnter(Collision other)
-    {
-
-
-        if (other.gameObject.CompareTag("ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-
-
-
 }
