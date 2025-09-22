@@ -13,7 +13,8 @@ public class Dashing : MonoBehaviour
 
     private Rigidbody rb;
     private CharacterInputController input;
-    private bool isDashing = false;
+
+    public bool IsDashing { get; private set; }  // <-- expose to PlayerMovement
     private float dashEndTime = 0f;
     private float lastDashTime = -Mathf.Infinity;
 
@@ -26,41 +27,33 @@ public class Dashing : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(dashKey) && Time.time >= lastDashTime + dashCooldown)
-        {
             StartDash();
-        }
 
-        if (isDashing && Time.time >= dashEndTime)
-        {
+        if (IsDashing && Time.time >= dashEndTime)
             EndDash();
-        }
     }
 
     private void StartDash()
     {
-        // Get input-based movement vector in world space
-        Vector3 moveDir = transform.forward * input.Forward + transform.right * input.Turn;
+        Vector3 moveDir = Vector3.zero;
+        if (input != null)
+            moveDir = transform.forward * input.Forward + transform.right * input.Turn;
 
-        if (moveDir.sqrMagnitude < 0.01f)
-        {
-            // If no input, default to forward dash
-            moveDir = transform.forward;
-        }
-
+        if (moveDir.sqrMagnitude < 0.01f) moveDir = transform.forward;
         moveDir.Normalize();
 
-        isDashing = true;
+        IsDashing = true;
         lastDashTime = Time.time;
         dashEndTime = Time.time + dashDuration;
 
-        // Cancel current velocity, then dash
-        rb.linearVelocity = Vector3.zero;
+        // zero current velocity, then apply an instantaneous velocity change
+        rb.linearVelocity = Vector3.zero;                              // ✅
         rb.AddForce(moveDir * dashForce, ForceMode.VelocityChange);
     }
 
     private void EndDash()
     {
-        isDashing = false;
-        rb.linearVelocity *= 0.5f; // optional slowdown after dash
+        IsDashing = false;
+        rb.linearVelocity *= 0.5f;                                     // ✅ optional slow-down
     }
 }
