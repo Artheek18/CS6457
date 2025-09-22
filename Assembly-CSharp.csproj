@@ -77,7 +77,6 @@
     <Compile Include="Assets\Scripts\AppEvents\TwoParamEvent.cs" />
     <Compile Include="Assets\Scripts\AppEvents\DemoEventEmitter.cs" />
     <Compile Include="Assets\Scripts\CharacterControl\CharacterCommon.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerMovment.cs" />
     <Compile Include="Assets\Scripts\CharacterControl\RootMotionControlScript.cs" />
     <Compile Include="Assets\Scripts\AppEvents\PlayerLandsReporter.cs" />
     <Compile Include="Assets\Scripts\Utility\QuaternionUtil.cs" />
@@ -88,6 +87,7 @@
     <Compile Include="Assets\Scripts\Utility\PauseScript.cs" />
     <Compile Include="Assets\Scripts\AppEvents\GauntletCompleteEvent.cs" />
     <Compile Include="Assets\Scripts\AppEvents\BoxCollisionEvent.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\CharacterControl\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Utility\GameQuitter.cs" />
     <Compile Include="Assets\Scripts\MinionSupport\MinionAudioCancelOnDeath.cs" />
